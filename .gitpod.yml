@@ -1,0 +1,5 @@
+tasks:
+    - name: setup_database
+      # create our database 
+      command: |
+          docker-compose up
