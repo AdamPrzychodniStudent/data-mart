@@ -1,6 +1,6 @@
 # Hello and Welcome! 😊
 
-This is my university portfolio project Build Data Mart in SQL (DLBDSPBDM01) focused on creating a database similar to that of Airbnb. 
+This is my university portfolio project Build Data Mart in SQL (DLBDSPBDM01) focused on creating a database for Airbnb.  
 
 ## Instruction 🐳
 
@@ -18,9 +18,9 @@ Here are the steps to connect to a database. If you have any questions, feel fre
 3. **Return to Gitpod:** Once logged in, switch back to Gitpod and open a new terminal.
 
 4. **List Docker Containers:** Enter the command 
-```
-docker container ls 
-```
+    ```
+    docker container ls 
+    ```
     to see all your docker containers.
 
 5. **Identify Your Container:** Find the CONTAINER ID for the postgres container and copy it.
