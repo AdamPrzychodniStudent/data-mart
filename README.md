@@ -1,25 +1,42 @@
-docker-compose up
+# Hello and Welcome! 😊
 
-open browser and port 5050
+This is my university portfolio project Build Data Mart in SQL (DLBDSPBDM01) focused on creating a database similar to that of Airbnb. 
 
-admin@admin.com
-root
+## Instruction 🐳
 
-then open new terminal 
+Here are the steps to connect to a database. If you have any questions, feel free to ask for help!
 
-docker container ls
+0. **Run Gitpod:** Open Gitpod and run workspace with that repo 
 
-copy the CONTAINER ID of postgres 
+1. **Open Port 5050:** Start by opening your browser and go to port 5050.
 
-docker inspect [Container ID]
+2. **Login to pgAdmin4:** Use the following credentials:
 
-copy the ip adress 
+    - Email: admin@admin.com
+    - Password: root
 
-add server in pgadmin 
+3. **Return to Gitpod:** Once logged in, switch back to Gitpod and open a new terminal.
 
-in connection put your id 
+4. **List Docker Containers:** Enter the command 
+```
+docker container ls 
+```
+to see all your docker containers.
 
-username: root
-password: root
+5. **Identify Your Container:** Find the CONTAINER ID for the postgres container and copy it.
 
-![Alt text](ERD.png)
+6. **Inspect Container:** Then in the terminal, type 
+```
+docker inspect [Container ID],
+``` 
+replacing [Container ID] with the actual ID you noted.
+
+7. **Copy the IP Address:** From the output of the inspect command, locate and copy the IP address.
+
+8. **Add New Server in pgAdmin 4:** Back in pgAdmin 4, click on 'Add New Server'. You can name the server as you like.
+
+9. **Establish Connection:** In the Connection tab, enter the IP address in the 'Host name/address' field.
+
+10. **Set Username and Password:** Change the username and password to both 'root'.
+
+11. **Save and Start Exploring:** Click save. You can now start exploring your database.
