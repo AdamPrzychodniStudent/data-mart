@@ -21,15 +21,15 @@ Here are the steps to connect to a database. If you have any questions, feel fre
 ```
 docker container ls 
 ```
-to see all your docker containers.
+    to see all your docker containers.
 
 5. **Identify Your Container:** Find the CONTAINER ID for the postgres container and copy it.
 
 6. **Inspect Container:** Then in the terminal, type 
-```
-docker inspect [Container ID],
-``` 
-replacing [Container ID] with the actual ID you noted.
+    ```
+    docker inspect [Container ID],
+    ``` 
+    replacing [Container ID] with the actual ID you noted.
 
 7. **Copy the IP Address:** From the output of the inspect command, locate and copy the IP address.
 
