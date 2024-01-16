@@ -938,3 +938,110 @@ VALUES
 (18, 'Invoice details for transaction 18'),
 (19, 'Invoice details for transaction 19'),
 (20, 'Invoice details for transaction 20');
+
+-- Add foreign key constraints to the Profile table
+ALTER TABLE Profile
+ADD CONSTRAINT fk_user_profile
+FOREIGN KEY (UserID)
+REFERENCES "User"(UserID);
+
+-- Add foreign key constraints to the Property table
+ALTER TABLE Property
+ADD CONSTRAINT fk_host_property
+FOREIGN KEY (HostID)
+REFERENCES "User"(UserID);
+
+ALTER TABLE Property
+ADD CONSTRAINT fk_category_property
+FOREIGN KEY (CategoryID)
+REFERENCES Category(CategoryID);
+
+ALTER TABLE Property
+ADD CONSTRAINT fk_location_property
+FOREIGN KEY (LocationID)
+REFERENCES Location(LocationID);
+
+-- Add foreign key constraints to the Booking table
+ALTER TABLE Booking
+ADD CONSTRAINT fk_property_booking
+FOREIGN KEY (PropertyID)
+REFERENCES Property(PropertyID);
+
+ALTER TABLE Booking
+ADD CONSTRAINT fk_guest_booking
+FOREIGN KEY (GuestID)
+REFERENCES "User"(UserID);
+
+-- Add foreign key constraints to the Review table
+ALTER TABLE Review
+ADD CONSTRAINT fk_booking_review
+FOREIGN KEY (BookingID)
+REFERENCES Booking(BookingID);
+
+-- Add foreign key constraints to the Transaction table
+ALTER TABLE Transaction
+ADD CONSTRAINT fk_booking_transaction
+FOREIGN KEY (BookingID)
+REFERENCES Booking(BookingID);
+
+ALTER TABLE Transaction
+ADD CONSTRAINT fk_payment_method_transaction
+FOREIGN KEY (PaymentMethodID)
+REFERENCES PaymentMethod(PaymentMethodID);
+
+-- Add foreign key constraints to the PropertyAmenity table
+ALTER TABLE PropertyAmenity
+ADD CONSTRAINT fk_property_propertyamenity
+FOREIGN KEY (PropertyID)
+REFERENCES Property(PropertyID);
+
+ALTER TABLE PropertyAmenity
+ADD CONSTRAINT fk_amenity_propertyamenity
+FOREIGN KEY (AmenityID)
+REFERENCES Amenity(AmenityID);
+
+-- Add foreign key constraints to the Image table
+ALTER TABLE Image
+ADD CONSTRAINT fk_property_image
+FOREIGN KEY (PropertyID)
+REFERENCES Property(PropertyID);
+
+-- Add foreign key constraints to the Notification table
+ALTER TABLE Notification
+ADD CONSTRAINT fk_user_notification
+FOREIGN KEY (UserID)
+REFERENCES "User"(UserID);
+
+-- Add foreign key constraints to the Rating table
+ALTER TABLE Rating
+ADD CONSTRAINT fk_review_rating
+FOREIGN KEY (ReviewID)
+REFERENCES Review(ReviewID);
+
+-- Add foreign key constraints to the Event table
+ALTER TABLE Event
+ADD CONSTRAINT fk_property_event
+FOREIGN KEY (PropertyID)
+REFERENCES Property(PropertyID);
+
+-- Add foreign key constraints to the Administrator table
+ALTER TABLE Administrator
+ADD CONSTRAINT unique_username_administrator
+UNIQUE (Username);
+
+-- Add foreign key constraints to the Analyst table
+ALTER TABLE Analyst
+ADD CONSTRAINT unique_username_analyst
+UNIQUE (Username);
+
+-- Add foreign key constraints to the Report table
+ALTER TABLE Report
+ADD CONSTRAINT fk_analyst_report
+FOREIGN KEY (AnalystID)
+REFERENCES Analyst(AnalystID);
+
+-- Add foreign key constraints to the Connection table
+ALTER TABLE Connection
+ADD CONSTRAINT fk_user_connection
+FOREIGN KEY (UserID)
+REFERENCES "User"(UserID);
