@@ -938,3 +938,108 @@ VALUES
 (18, 'Invoice details for transaction 18'),
 (19, 'Invoice details for transaction 19'),
 (20, 'Invoice details for transaction 20');
+
+-- The following ALTER TABLE statements are explicitly defining foreign key constraints to clearly demonstrate the relationships between tables.
+
+-- Add foreign key constraint to Profile table linking to User table
+ALTER TABLE Profile
+ADD CONSTRAINT fk_profile_user
+FOREIGN KEY (UserID) REFERENCES "User"(UserID);
+
+-- Add foreign key constraints to Property table linking to User, Category, and Location tables
+ALTER TABLE Property
+ADD CONSTRAINT fk_property_user
+FOREIGN KEY (HostID) REFERENCES "User"(UserID),
+ADD CONSTRAINT fk_property_category
+FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID),
+ADD CONSTRAINT fk_property_location
+FOREIGN KEY (LocationID) REFERENCES Location(LocationID);
+
+-- Add foreign key constraints to Booking table linking to Property and User tables
+ALTER TABLE Booking
+ADD CONSTRAINT fk_booking_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID),
+ADD CONSTRAINT fk_booking_user
+FOREIGN KEY (GuestID) REFERENCES "User"(UserID);
+
+-- Add foreign key constraint to Review table linking to Booking table
+ALTER TABLE Review
+ADD CONSTRAINT fk_review_booking
+FOREIGN KEY (BookingID) REFERENCES Booking(BookingID);
+
+-- Add foreign key constraints to Transaction table linking to Booking and PaymentMethod tables
+ALTER TABLE Transaction
+ADD CONSTRAINT fk_transaction_booking
+FOREIGN KEY (BookingID) REFERENCES Booking(BookingID),
+ADD CONSTRAINT fk_transaction_paymentmethod
+FOREIGN KEY (PaymentMethodID) REFERENCES PaymentMethod(PaymentMethodID);
+
+-- Add foreign key constraints to PropertyAmenity table linking to Property and Amenity tables
+ALTER TABLE PropertyAmenity
+ADD CONSTRAINT fk_propertyamenity_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID),
+ADD CONSTRAINT fk_propertyamenity_amenity
+FOREIGN KEY (AmenityID) REFERENCES Amenity(AmenityID);
+
+-- Add foreign key constraint to Image table linking to Property table
+ALTER TABLE Image
+ADD CONSTRAINT fk_image_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID);
+
+-- Add foreign key constraint to Notification table linking to User table
+ALTER TABLE Notification
+ADD CONSTRAINT fk_notification_user
+FOREIGN KEY (UserID) REFERENCES "User"(UserID);
+
+-- Add foreign key constraint to Rating table linking to Review table
+ALTER TABLE Rating
+ADD CONSTRAINT fk_rating_review
+FOREIGN KEY (ReviewID) REFERENCES Review(ReviewID);
+
+-- Add foreign key constraint to Event table linking to Property table
+ALTER TABLE Event
+ADD CONSTRAINT fk_event_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID);
+
+-- Add foreign key constraint to Calendar table linking to Property table
+ALTER TABLE Calendar
+ADD CONSTRAINT fk_calendar_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID);
+
+-- Add foreign key constraints to Wishlist table linking to User and Property tables
+ALTER TABLE Wishlist
+ADD CONSTRAINT fk_wishlist_user
+FOREIGN KEY (UserID) REFERENCES "User"(UserID),
+ADD CONSTRAINT fk_wishlist_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID);
+
+-- Add foreign key constraints to Message table linking to User table for both SenderID and ReceiverID
+ALTER TABLE Message
+ADD CONSTRAINT fk_message_sender
+FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
+ADD CONSTRAINT fk_message_receiver
+FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID);
+
+-- Add foreign key constraints to UserMessageLink table linking to User and Message tables
+ALTER TABLE UserMessageLink
+ADD CONSTRAINT fk_usermessagelink_sender
+FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
+ADD CONSTRAINT fk_usermessagelink_receiver
+FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID),
+ADD CONSTRAINT fk_usermessagelink_message
+FOREIGN KEY (MessageID) REFERENCES Message(MessageID);
+
+-- Add foreign key constraint to Discount table linking to Property table
+ALTER TABLE Discount
+ADD CONSTRAINT fk_discount_property
+FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID);
+
+-- Add foreign key constraint to Verification table linking to User table
+ALTER TABLE Verification
+ADD CONSTRAINT fk_verification_user
+FOREIGN KEY (UserID) REFERENCES "User"(UserID);
+
+-- Add foreign key constraint to Invoice table linking to Transaction table
+ALTER TABLE Invoice
+ADD CONSTRAINT fk_invoice_transaction
+FOREIGN KEY (TransactionID) REFERENCES Transaction(TransactionID);
